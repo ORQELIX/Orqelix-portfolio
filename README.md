@@ -26,24 +26,24 @@ This repository contains the source code for the Orqelix web platform. It is bui
 *   Node.js (LTS version)
 *   npm or yarn
 
-##Install dependencies:
+## Install dependencies:
 
-#Bash
+# Bash
 npm install
 Development
 ##Start the development server with Hot Module Replacement (HMR):
 
-#Bash
+# Bash
 npm run dev
 Deployment
 ##This project is configured for deployment. To generate a production-ready build:
 
-#Bash
+# Bash
 npm run build
 ##The output will be located in the dist/ directory.
 
-##Style Guide & Linting
-#To maintain code quality across the codebase, this project enforces strict ESLint rules.
+## Style Guide & Linting
+# To maintain code quality across the codebase, this project enforces strict ESLint rules.
 
 Linting: Run npm run lint to check for issues.
 
