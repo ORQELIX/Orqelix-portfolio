@@ -1,4 +1,5 @@
-# Orqelix Official Website<img width="500" height="500" alt="orqelix" src="https://github.com/user-attachments/assets/d06c01c9-c323-4cc8-8060-bbf16233a4c9" />
+# Orqelix Official Website<img width="500" height="500" alt="2e8557ba-36ec-4899-a6c7-03523267fe72-removebg-preview" src="https://github.com/user-attachments/assets/02179ae4-fc99-43ee-8677-c277bf53a0eb" />
+
 
 
 The official digital presence for **Orqelix**. This project serves as the company's portfolio, showcasing our services, expertise, and professional brand identity.
