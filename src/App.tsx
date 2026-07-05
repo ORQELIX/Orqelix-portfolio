@@ -15,12 +15,12 @@ import {
 } from "lucide-react";
 
 import OrqelixLogo from "./assets/orqelix.png";
-import RitikPhoto from "./assets/ritik.jpeg";
+import RitikPhoto from "./assets/ritik.jpg";
 import SidhanshuPhoto from "./assets/sidhanshu.jpeg";
 import ShopImage from "./assets/shop.jpg";
 import MissingImage from "./assets/missing.jpg";
 import LinuxImage from "./assets/linux.jpg";
-
+import { useIsMobile } from "./hooks/use-mobile";
 import {
   SiPython,
   SiOpencv,
@@ -56,6 +56,7 @@ const technologies = [
 ];
 
 export default function App() {
+  const isMobile = useIsMobile();
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
@@ -136,14 +137,24 @@ md:-translate-y-10
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
 >
-            <motion.div
-              animate={{ y: [0, -14, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <QEmblem
-    height={window.innerWidth < 768 ? 280 : 500}
-/>
-            </motion.div>
+            {isMobile ? (
+  <img
+    src={OrqelixLogo}
+    alt="Orqelix Logo"
+    className="w-64 h-auto"
+  />
+) : (
+  <motion.div
+    animate={{ y: [0, -14, 0] }}
+    transition={{
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  >
+    <QEmblem height={500} />
+  </motion.div>
+)}
           </motion.div>
         </div>
       </section>
@@ -468,7 +479,7 @@ md:-translate-y-10
              rounded-full
              bg-white
              opacity-35 md:opacity-90
-             blur-[170px]"
+             blur-[50px]"
 />
 {/* Blue transition */}
 <div
@@ -477,7 +488,7 @@ md:-translate-y-10
              -translate-y-1/2
              rounded-full
              bg-blue-500/10 md:bg-blue-500/20
-             blur-[150px]"
+             blur-[80px]"
 />
 {/* Accent glow on top-right */}
 <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-indigo-500/30 blur-[140px]" />
@@ -487,11 +498,17 @@ via-blue-500/10
 to-[#09112d]" />
 
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
-           <div className="flex items-start justify-center mt-8 md:-mt-20 ">
-            <QEmblem
-    height={window.innerWidth < 768 ? 280 : 500}
-/>
-            </div>
+           <div className="flex items-start justify-center mt-8 md:-mt-20">
+  {isMobile ? (
+    <img
+      src={OrqelixLogo}
+      alt="Orqelix Logo"
+      className="w-56 h-auto"
+    />
+  ) : (
+    <QEmblem height={500} />
+  )}
+</div>
             <div className="mt-20">
               <div className="text-xs font-bold tracking-widest text-brand-soft">LET'S BUILD SOMETHING AMAZING</div>
               <h2 className="mt-3 font-[Sora] text-3xl font-bold md:text-4xl">Have a Project in Mind?</h2>
