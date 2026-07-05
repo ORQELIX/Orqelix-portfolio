@@ -441,16 +441,24 @@ md:-translate-y-10
       {/* CTA */}
       <section id="contact" className="mx-auto max-w-7xl px-6 pt-20 pb-8">
         
-        <div className="relative overflow-hidden rounded-3xl bg-[#09112d] p-10 text-white shadow-elegant md:p-14">
+        <div
+  className="
+    relative
+    overflow-hidden
+    rounded-3xl
+    bg-gradient-to-br
+    from-[#162A72]
+    via-[#1B3FA8]
+    to-[#081126]
+    md:bg-[#09112d]
+    p-10
+    text-white
+    shadow-elegant
+    md:p-14
+  "
+>
         {/* Core white glow */}
-<div
-  className="absolute left-[20px] top-1/2
-             h-[380px] w-[380px]
-             -translate-y-1/2
-             rounded-full
-             bg-white
-             opacity-70
-             blur-[70px]"
+<div className="absolute left-[20px] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-white opacity-30 md:opacity-70 blur-[70px]"
 />
           {/* White glow behind logo */}
 <div
@@ -459,7 +467,7 @@ md:-translate-y-10
              -translate-y-1/2
              rounded-full
              bg-white
-             opacity-90
+             opacity-35 md:opacity-90
              blur-[170px]"
 />
 {/* Blue transition */}
@@ -468,7 +476,7 @@ md:-translate-y-10
              h-[700px] w-[700px]
              -translate-y-1/2
              rounded-full
-             bg-blue-500/20
+             bg-blue-500/10 md:bg-blue-500/20
              blur-[150px]"
 />
 
@@ -479,7 +487,7 @@ from-white/10
 via-blue-500/10
 to-[#09112d]" />
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
-           <div className="flex items-start justify-center -mt-20">
+           <div className="flex items-start justify-center -mt-20 ">
             <QEmblem
     height={window.innerWidth < 768 ? 280 : 500}
 />
