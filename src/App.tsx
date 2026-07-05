@@ -60,7 +60,7 @@ export default function App() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-4">
           <a href="#home" className="flex items-center gap-3">
   <img
     src={OrqelixLogo}
@@ -89,9 +89,9 @@ export default function App() {
       </header>
       {/* Hero */}
       <section id="home" className="bg-hero relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 pt-14 pb-10 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-6 pt-12 md:pt-14 pb-10 md:grid-cols-2">
           <div>
-            <div className="mb-5 flex items-center gap-2 text-xs font-semibold tracking-widest text-brand">
+            <div className="mb-5 flex flex-wrap items-center gap-2 text-xs font-semibold tracking-widest text-brand">
               <span>AI SOLUTIONS</span>
               <span className="h-1 w-1 rounded-full bg-brand" />
               <span>SOFTWARE DEVELOPMENT</span>
@@ -102,10 +102,10 @@ export default function App() {
               I Build Digital Experiences <br />
               That Drive <span className="text-brand-gradient">Real Results.</span>
             </h1>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-muted">
+            <p className="mt-6 max-w-full md:max-w-lg text-base leading-relaxed text-ink-muted">
               Helping businesses and individuals with modern software solutions, automated workflows and stunning digital products.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href="#projects"
                 className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground shadow-elegant transition hover:opacity-90"
@@ -123,7 +123,15 @@ export default function App() {
 
           {/* Animated Q emblem */}
           <motion.div
-  className="relative -translate-y-10 flex items-center justify-center"
+  className="
+relative
+flex
+items-center
+justify-center
+mt-8
+md:mt-0
+md:-translate-y-10
+"
   initial={{ opacity: 0, scale: 0.9 }}
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -132,7 +140,9 @@ export default function App() {
               animate={{ y: [0, -14, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <QEmblem height={500} />
+              <QEmblem
+    height={window.innerWidth < 768 ? 280 : 500}
+/>
             </motion.div>
           </motion.div>
         </div>
@@ -470,7 +480,9 @@ via-blue-500/10
 to-[#09112d]" />
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
            <div className="flex items-start justify-center -mt-20">
-            <QEmblem height={500} />
+            <QEmblem
+    height={window.innerWidth < 768 ? 280 : 500}
+/>
             </div>
             <div className="mt-20">
               <div className="text-xs font-bold tracking-widest text-brand-soft">LET'S BUILD SOMETHING AMAZING</div>
