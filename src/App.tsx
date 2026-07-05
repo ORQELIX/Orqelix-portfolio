@@ -99,7 +99,7 @@ export default function App() {
               <span>DIGITAL INNOVATION</span>
             </div>
             <h1 className="font-[Sora] text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-              I Build Digital Experiences <br />
+              We Build Digital Experiences <br />
               That Drive <span className="text-brand-gradient">Real Results.</span>
             </h1>
             <p className="mt-6 max-w-full md:max-w-lg text-base leading-relaxed text-ink-muted">
@@ -157,7 +157,7 @@ md:-translate-y-10
               Crafting Solutions <br />With <span className="text-brand-gradient">Purpose.</span>
             </h2>
             <p className="mt-5 text-sm leading-relaxed text-ink-muted">
-              I'm a passionate developer and problem solver who turns ideas into powerful digital products. From concept to deployment, I deliver solutions that are fast, scalable, and built to make an impact.
+              We a passionate developer and problem solver who turns ideas into powerful digital products. From concept to deployment, We deliver solutions that are fast, scalable, and built to make an impact.
             </p>
             <a
   href="https://www.instagram.com/orqelix.tech/"
@@ -295,11 +295,11 @@ md:-translate-y-10
 
           <div className="relative mt-14 grid gap-8 md:grid-cols-5">
             {[
-              { n: "01", icon: MessageSquare, title: "Understand", desc: "I listen, research and understand your goals." },
-              { n: "02", icon: PenTool, title: "Plan", desc: "I plan the best approach and create a roadmap." },
-              { n: "03", icon: Code2, title: "Build", desc: "I build with clean code and modern technologies." },
-              { n: "04", icon: Rocket, title: "Deploy", desc: "I test thoroughly and deliver with confidence." },
-              { n: "05", icon: LifeBuoy, title: "Support", desc: "I provide ongoing support and improvements." },
+              { n: "01", icon: MessageSquare, title: "Understand", desc: "We listen, research and understand your goals." },
+              { n: "02", icon: PenTool, title: "Plan", desc: "We plan the best approach and create a roadmap." },
+              { n: "03", icon: Code2, title: "Build", desc: "We build with clean code and modern technologies." },
+              { n: "04", icon: Rocket, title: "Deploy", desc: "We test thoroughly and deliver with confidence." },
+              { n: "05", icon: LifeBuoy, title: "Support", desc: "We provide ongoing support and improvements." },
             ].map(({ n, icon: Icon, title, desc }) => (
               <div key={n} className="text-center">
                 <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-surface shadow-card">
@@ -479,13 +479,13 @@ md:-translate-y-10
              bg-blue-500/10 md:bg-blue-500/20
              blur-[150px]"
 />
-
 {/* Accent glow on top-right */}
 <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-indigo-500/30 blur-[140px]" />
 <div className="absolute inset-0 bg-gradient-to-r
 from-white/10
 via-blue-500/10
 to-[#09112d]" />
+
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
            <div className="flex items-start justify-center mt-8 md:-mt-20 ">
             <QEmblem
