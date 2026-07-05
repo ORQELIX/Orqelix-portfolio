@@ -1,75 +1,58 @@
-# React + TypeScript + Vite
+# Orqelix Official Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The official digital presence for **Orqelix**. This project serves as the company's portfolio, showcasing our services, expertise, and professional brand identity.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Deployment](#deployment)
+- [Style Guide & Linting](#style-guide--linting)
+- [Contact](#contact)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project Overview
+This repository contains the source code for the Orqelix web platform. It is built using a modern, high-performance stack designed for fast loading, SEO optimization, and seamless user experiences.
 
-## React Compiler
+## Tech Stack
+*   **Framework:** React
+*   **Language:** TypeScript
+*   **Build Tool:** Vite
+*   **Styling:** [Insert Styling Library, e.g., Tailwind CSS / Sass]
+*   **Deployment:** [e.g., Vercel / Netlify / AWS]
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+*   Node.js (LTS version)
+*   npm or yarn
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+Install dependencies:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Bash
+npm install
+Development
+Start the development server with Hot Module Replacement (HMR):
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Bash
+npm run dev
+Deployment
+This project is configured for deployment. To generate a production-ready build:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Bash
+npm run build
+The output will be located in the dist/ directory.
 
-```
+Style Guide & Linting
+To maintain code quality across the codebase, this project enforces strict ESLint rules.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Linting: Run npm run lint to check for issues.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Configuration: Custom linting rules are defined in eslint.config.js. Please do not modify these without consulting the lead developer.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Contact
+For any questions regarding this codebase or the Orqelix platform, please reach out to the development team at:
+mail-orqelix@gmail.com
