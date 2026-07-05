@@ -137,24 +137,14 @@ md:-translate-y-10
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
 >
-            {isMobile ? (
-  <img
-    src={OrqelixLogo}
-    alt="Orqelix Logo"
-    className="w-64 h-auto"
-  />
-) : (
-  <motion.div
-    animate={{ y: [0, -14, 0] }}
-    transition={{
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  >
-    <QEmblem height={500} />
-  </motion.div>
-)}
+            <motion.div
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <QEmblem
+    height={window.innerWidth < 768 ? 280 : 500}
+/>
+            </motion.div>
           </motion.div>
         </div>
       </section>
