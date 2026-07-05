@@ -489,15 +489,9 @@ to-[#09112d]" />
 
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
            <div className="flex items-start justify-center mt-8 md:-mt-20">
-  {isMobile ? (
-    <img
-      src={OrqelixLogo}
-      alt="Orqelix Logo"
-      className="w-56 h-auto"
-    />
-  ) : (
-    <QEmblem height={500} />
-  )}
+  <div className="flex items-start justify-center mt-8 md:-mt-20 ">
+  <QEmblem height={isMobile ? 280 : 500}/>
+</div>
 </div>
             <div className="mt-20">
               <div className="text-xs font-bold tracking-widest text-brand-soft">LET'S BUILD SOMETHING AMAZING</div>
