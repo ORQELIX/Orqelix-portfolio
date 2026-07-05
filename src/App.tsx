@@ -458,9 +458,6 @@ md:-translate-y-10
     md:p-14
   "
 >
-        {/* Core white glow */}
-<div className="absolute left-[20px] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-white opacity-30 md:opacity-70 blur-[70px]"
-/>
           {/* White glow behind logo */}
 <div
   className="absolute left-[-220px] top-1/2
@@ -469,7 +466,7 @@ md:-translate-y-10
              rounded-full
              bg-white
              opacity-35 md:opacity-90
-             blur-[50px]"
+             "
 />
 {/* Blue transition */}
 <div
@@ -478,7 +475,7 @@ md:-translate-y-10
              -translate-y-1/2
              rounded-full
              bg-blue-500/10 md:bg-blue-500/20
-             blur-[80px]"
+             "
 />
 {/* Accent glow on top-right */}
 <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-indigo-500/30 blur-[140px]" />
@@ -489,9 +486,15 @@ to-[#09112d]" />
 
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
            <div className="flex items-start justify-center mt-8 md:-mt-20">
-  <div className="flex items-start justify-center mt-8 md:-mt-20 ">
-  <QEmblem height={isMobile ? 280 : 500}/>
-</div>
+  {isMobile ? (
+    <img
+      src={OrqelixLogo}
+      alt="Orqelix Logo"
+      className="w-56 h-auto"
+    />
+  ) : (
+    <QEmblem height={500} />
+  )}
 </div>
             <div className="mt-20">
               <div className="text-xs font-bold tracking-widest text-brand-soft">LET'S BUILD SOMETHING AMAZING</div>
