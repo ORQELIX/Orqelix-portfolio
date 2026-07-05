@@ -487,7 +487,7 @@ from-white/10
 via-blue-500/10
 to-[#09112d]" />
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
-           <div className="flex items-start justify-center mt-2 md:-mt-20 ">
+           <div className="flex items-start justify-center mt-8 md:-mt-20 ">
             <QEmblem
     height={window.innerWidth < 768 ? 280 : 500}
 />
