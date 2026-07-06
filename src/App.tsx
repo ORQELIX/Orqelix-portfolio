@@ -99,9 +99,9 @@ export default function App() {
     className="h-12 w-auto object-contain"
   />
 
-  <span className="font-[Sora] text-2xl font-bold tracking-tight">
-    ORQELIX
-  </span>
+  <span className="font-[Sora] text-xl sm:text-2xl font-bold tracking-tight">
+  {isMobile ? "Orqelix" : "ORQELIX"}
+</span>
 </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-ink-muted md:flex">
             {navLinks.map((l) => (
