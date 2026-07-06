@@ -100,7 +100,7 @@ export default function App() {
   />
 
   <span className="font-[Sora] text-2xl font-bold tracking-tight">
-    Orqelix
+    ORQELIX
   </span>
 </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-ink-muted md:flex">
