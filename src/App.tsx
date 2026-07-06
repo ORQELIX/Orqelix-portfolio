@@ -327,7 +327,7 @@ md:-translate-y-10
 
   <p className="mx-auto mt-4 max-w-2xl text-center text-ink-muted">
     Leveraging modern technologies to build intelligent software,
-    AI-powered solutions, scalable web platforms, mobile applications,
+    AI-powered solutions, scalable web platforms, mobile and desktop applications,
     and business automation.
   </p>
 
