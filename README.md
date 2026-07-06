@@ -184,8 +184,13 @@ Founder — **Orqelix**
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+**Copyright © 2026 Orqelix. All Rights Reserved.**
 
+This project and its contents are proprietary and owned exclusively by **Orqelix**.
+
+No part of this repository, including the source code, UI/UX design, animations, branding, logos, graphics, or other assets, may be copied, reproduced, modified, distributed, or used in any form without prior written permission from Orqelix.
+
+See the [LICENSE](LICENSE) file for full terms.
 ---
 
 ⭐ If you like this project, consider giving it a star on GitHub!
