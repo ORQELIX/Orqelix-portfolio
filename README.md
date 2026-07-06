@@ -1,4 +1,5 @@
 # Orqelix Official Website
+<img width="627" height="627" alt="2e8557ba-36ec-4899-a6c7-03523267fe72" src="https://github.com/user-attachments/assets/0291689d-7cdb-4e7d-ba89-1f04deb8d7bc" />
 
 <img width="500" height="500" alt="2e8557ba-36ec-4899-a6c7-03523267fe72-removebg-preview" src="https://github.com/user-attachments/assets/02179ae4-fc99-43ee-8677-c277bf53a0eb" />
 
