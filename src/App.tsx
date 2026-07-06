@@ -1,18 +1,4 @@
-import {
-  ArrowUpRight,
-  Code2,
-  Zap,
-  Sparkles,
-  Palette,
-  MessageSquare,
-  PenTool,
-  Rocket,
-  LifeBuoy,
-  Mail,
-  Github,
-  Linkedin,
-  Instagram,
-} from "lucide-react";
+import {  ArrowUpRight,  Code2, Zap, Sparkles, Palette,  MessageSquare,  PenTool,  Rocket,  LifeBuoy,  Mail,  Github,  Linkedin,  Instagram,} from "lucide-react";
 import Orqelixwhite from "./assets/orqelix-white.png";
 import OrqelixLogo from "./assets/orqelix.png";
 import RitikPhoto from "./assets/ritik.jpg";
@@ -55,6 +41,50 @@ const technologies = [
   { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
 ];
 
+const navLinks = ["Home", "About", "Services", "Projects", "Process", "Contact"];
+
+const services = [
+  { icon: Code2, title: "Web Development", desc: "Modern, responsive and high performance websites." },
+  { icon: Zap, title: "Automation", desc: "Automate workflows and save valuable time." },
+  { icon: Sparkles, title: "Custom Solutions", desc: "Tailored solutions for your unique business needs." },
+  { icon: Palette, title: "UI/UX Design", desc: "Clean, intuitive and conversion focused designs." },
+];
+
+const projects = [
+  {
+    tag: "Desktop App",
+    title: "TEFLX Shop Management System",
+    desc: "Complete shop management solution with billing, inventory, and reporting.",
+    stack: ["Flutter", "Python", "SQLite"],
+    github: "https://github.com/TEFLX/Teflx-shop-management",
+    image: ShopImage,
+  },
+  {
+    tag: "AI / Machine Learning",
+    title: "Missing Component Detection",
+    desc: "AI-powered system to detect missing components with high accuracy.",
+    stack: ["YOLOv8", "Python", "OpenCV"],
+    github: "https://github.com/TEFLX/Missing-componet-detection",
+    image: MissingImage,
+  },
+  {
+    tag: "Linux Tool",
+    title: "Linux GUI Installer",
+    desc: "Linux application installer with GUI and terminal logs.",
+    stack: ["Bash", "Python", "GTK"],
+    github: "https://github.com/TEFLX/LINUX-APPLICATION-GUI-INSTALLER-WITH-TERMINAL-LOG",
+    image: LinuxImage,
+  },
+];
+
+const processSteps = [
+  { n: "01", icon: MessageSquare, title: "Understand", desc: "We listen, research and understand your goals." },
+  { n: "02", icon: PenTool, title: "Plan", desc: "We plan the best approach and create a roadmap." },
+  { n: "03", icon: Code2, title: "Build", desc: "We build with clean code and modern technologies." },
+  { n: "04", icon: Rocket, title: "Deploy", desc: "We test thoroughly and deliver with confidence." },
+  { n: "05", icon: LifeBuoy, title: "Support", desc: "We provide ongoing support and improvements." },
+];
+
 export default function App() {
   const isMobile = useIsMobile();
   return (
@@ -74,7 +104,7 @@ export default function App() {
   </span>
 </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-ink-muted md:flex">
-            {["Home", "About", "Services", "Projects", "Process", "Contact"].map((l) => (
+            {navLinks.map((l) => (
               <a key={l} href={`#${l.toLowerCase()}`} className="transition hover:text-foreground">
                 {l}
               </a>
@@ -89,9 +119,9 @@ export default function App() {
         </div>
       </header>
       {/* Hero */}
-      <section id="home" className="bg-hero relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-6 pt-12 md:pt-14 pb-10 md:grid-cols-2">
-          <div>
+      <section id="home" className="bg-hero relative overflow-hidden scroll-mt-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-6 pt-6 md:pt-8 pb-8 md:grid-cols-2">
+          <div className="self-start">
             <div className="mb-5 flex flex-wrap items-center gap-2 text-xs font-semibold tracking-widest text-brand">
               <span>AI SOLUTIONS</span>
               <span className="h-1 w-1 rounded-full bg-brand" />
@@ -150,7 +180,7 @@ md:-translate-y-10
       </section>
 
       {/* About + Services */}
-      <section id="about" className="mx-auto max-w-7xl px-6 py-20">
+      <section id="about" className="mx-auto max-w-7xl px-6 pt-6 pb-20 scroll-mt-24">
         <div className="grid gap-10 md:grid-cols-[1fr_2fr]">
           <div>
             <div className="mb-3 text-xs font-bold tracking-widest text-brand">• ABOUT US</div>
@@ -172,13 +202,8 @@ md:-translate-y-10
 
           <div>
             <div className="mb-6 text-xs font-bold tracking-widest text-brand">• WHAT WE DO</div>
-            <div id="services" className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { icon: Code2, title: "Web Development", desc: "Modern, responsive and high performance websites." },
-                { icon: Zap, title: "Automation", desc: "Automate workflows and save valuable time." },
-                { icon: Sparkles, title: "Custom Solutions", desc: "Tailored solutions for your unique business needs." },
-                { icon: Palette, title: "UI/UX Design", desc: "Clean, intuitive and conversion focused designs." },
-              ].map(({ icon: Icon, title, desc }) => (
+            <div id="services" className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 scroll-mt-24">
+              {services.map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="group rounded-2xl border border-border bg-surface p-5 shadow-card transition hover:-translate-y-1 hover:shadow-elegant">
                   <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
                     <Icon className="h-5 w-5" />
@@ -201,39 +226,14 @@ md:-translate-y-10
       </section>
 
       {/* Projects */}
-      <section id="projects" className="mx-auto max-w-7xl px-6 py-20">
+      <section id="projects" className="mx-auto max-w-7xl px-6 py-20 scroll-mt-3">
         <div className="mb-3 text-center text-xs font-bold tracking-widest text-brand">• FEATURED WORK</div>
         <h2 className="text-center font-[Sora] text-3xl font-bold md:text-4xl">
           Recent <span className="text-brand-gradient">Projects</span>
         </h2>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {[
-  {
-    tag: "Desktop App",
-    title: "TEFLX Shop Management System",
-    desc: "Complete shop management solution with billing, inventory, and reporting.",
-    stack: ["Flutter", "Python", "SQLite"],
-    github: "https://github.com/TEFLX/Teflx-shop-management",
-    image: ShopImage,
-  },
-  {
-    tag: "AI / Machine Learning",
-    title: "Missing Component Detection",
-    desc: "AI-powered system to detect missing components with high accuracy.",
-    stack: ["YOLOv8", "Python", "OpenCV"],
-    github: "https://github.com/TEFLX/Missing-componet-detection",
-    image: MissingImage,
-  },
-  {
-    tag: "Linux Tool",
-    title: "Linux GUI Installer",
-    desc: "Linux application installer with GUI and terminal logs.",
-    stack: ["Bash", "Python", "GTK"],
-    github: "https://github.com/TEFLX/LINUX-APPLICATION-GUI-INSTALLER-WITH-TERMINAL-LOG",
-    image: LinuxImage,
-  },
-].map((p) => (
+          {projects.map((p) => (
             <article key={p.title} className="group overflow-hidden rounded-3xl border border-border bg-[oklch(0.15_0.04_265)] text-white shadow-card transition hover:-translate-y-1 hover:shadow-elegant">
               <div className="relative h-52 overflow-hidden">
   <img
@@ -287,7 +287,7 @@ md:-translate-y-10
       </section>
 
       {/* Process */}
-      <section id="process" className="bg-surface-alt py-20">
+      <section id="process" className="bg-surface-alt py-20 scroll-mt-4">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-3 text-center text-xs font-bold tracking-widest text-brand">• OUR PROCESS</div>
           <h2 className="text-center font-[Sora] text-3xl font-bold md:text-4xl">
@@ -295,13 +295,7 @@ md:-translate-y-10
           </h2>
 
           <div className="relative mt-14 grid gap-8 md:grid-cols-5">
-            {[
-              { n: "01", icon: MessageSquare, title: "Understand", desc: "We listen, research and understand your goals." },
-              { n: "02", icon: PenTool, title: "Plan", desc: "We plan the best approach and create a roadmap." },
-              { n: "03", icon: Code2, title: "Build", desc: "We build with clean code and modern technologies." },
-              { n: "04", icon: Rocket, title: "Deploy", desc: "We test thoroughly and deliver with confidence." },
-              { n: "05", icon: LifeBuoy, title: "Support", desc: "We provide ongoing support and improvements." },
-            ].map(({ n, icon: Icon, title, desc }) => (
+            {processSteps.map(({ n, icon: Icon, title, desc }) => (
               <div key={n} className="text-center">
                 <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-surface shadow-card">
                   <Icon className="h-6 w-6 text-brand" />
@@ -440,7 +434,7 @@ md:-translate-y-10
 </section>
 
       {/* CTA */}
-      <section id="contact" className="mx-auto max-w-7xl px-6 pt-20 pb-8">
+      <section id="contact" className="mx-auto max-w-7xl px-6 pt-20 pb-8 scroll-mt-8">
         
         <div
   className="

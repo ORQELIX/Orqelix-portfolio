@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import * as THREE from 'three'; // Import types for development
+import type * as THREE from "three";
 /**
  * High-Fidelity Volumetric 3D Q-Emblem Chassis Engine
  * Features:
@@ -50,8 +50,8 @@ export function QEmblem({ height = 500 }: { height?: number }) {
 
       renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       renderer.setSize(width, height, true);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.shadowMap.enabled = true;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      renderer.shadowMap.enabled = false;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       // Filmic tone mapping + a touch of exposure so the metallic material reads
       // punchy and bright instead of flat/dull, while output stays in the correct
@@ -239,8 +239,6 @@ export function QEmblem({ height = 500 }: { height?: number }) {
       tailShape.lineTo(-0.15, -1.5);
       tailShape.closePath();
       
-      qMasterShape.innerPath = qMasterShape.innerPath || [];
-      
       const qInnerHex = new THREE.Path();
       for (let i = 0; i < 6; i++) {
         const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
@@ -310,23 +308,12 @@ export function QEmblem({ height = 500 }: { height?: number }) {
         specularIntensity: 0.9,
       });
 
-      // Unified vector helper function to build realistic thick 3D structural tubes between points
-      const create3DRod = (p1: THREE.Vector3, p2: THREE.Vector3, radius: number = 0.025) => {
-        const distance = p1.distanceTo(p2);
-        const rodGeo = new THREE.CylinderGeometry(radius, radius, distance, 8);
-        const rodMesh = new THREE.Mesh(rodGeo, techComponentMat);
-
-        rodMesh.position.copy(p1).add(p2).multiplyScalar(0.5);
-
-        const direction = new THREE.Vector3().subVectors(p2, p1).normalize();
-        const upVector = new THREE.Vector3(0, 1, 0);
-        rodMesh.quaternion.setFromUnitVectors(upVector, direction);
-
-        return rodMesh;
-      };
-
       const innerNodeGeo = new THREE.SphereGeometry(0.13, 32, 32);
       const outerNodeGeo = new THREE.SphereGeometry(0.15, 32, 32);
+      // Single unit-radius, unit-height cylinder reused (via a per-instance scale)
+      // for every rod in the framework, instead of allocating a bespoke
+      // CylinderGeometry for each of the 12 rods.
+      const unitRodGeo = new THREE.CylinderGeometry(1, 1, 1, 8);
 
       const centerZ = 0.20; 
       
@@ -336,44 +323,58 @@ export function QEmblem({ height = 500 }: { height?: number }) {
       const floatingTechOuterRadius = floatingTechInnerRadius + 0.9;
       
       const cornerPoints: THREE.Vector3[] = [];
+      const outerPoints: THREE.Vector3[] = [];
 
       for (let i = 0; i < 6; i++) {
         const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
-        
+
         // Offset inner frame tracking arrays cleanly away from emblem mesh shell
         const innerX = Math.cos(angle) * floatingTechInnerRadius - centerOffset.x;
         const innerY = Math.sin(angle) * floatingTechInnerRadius - centerOffset.y;
-        const pInner = new THREE.Vector3(innerX, innerY, centerZ);
-        cornerPoints.push(pInner);
-
-        // Inner Node Sphere
-        const innerNode = new THREE.Mesh(innerNodeGeo, techComponentMat);
-        innerNode.position.copy(pInner);
-        mainGroup.add(innerNode);
+        cornerPoints.push(new THREE.Vector3(innerX, innerY, centerZ));
 
         // Outer Satellite Position
         const outerX = Math.cos(angle) * floatingTechOuterRadius - centerOffset.x;
         const outerY = Math.sin(angle) * floatingTechOuterRadius - centerOffset.y;
-        const pOuter = new THREE.Vector3(outerX, outerY, centerZ);
-
-        // Outer Satellite Node Sphere
-        const outerNode = new THREE.Mesh(outerNodeGeo, techComponentMat);
-        outerNode.position.copy(pOuter);
-        mainGroup.add(outerNode);
-
-        // Thick Volumetric 3D Radial Stalk
-        const radialRod = create3DRod(pInner, pOuter, 0.03);
-        mainGroup.add(radialRod);
+        outerPoints.push(new THREE.Vector3(outerX, outerY, centerZ));
       }
 
-      // Thick Hexagonal Outer Structure Wireframe Linkage
-      for (let i = 0; i < 6; i++) {
-        const startPt = cornerPoints[i];
-        const endPt = cornerPoints[(i + 1) % 6];
+      // Inner + outer satellite nodes share identical geometry/material within each
+      // ring, so one InstancedMesh per ring replaces 6 individual Mesh allocations.
+      const innerNodesMesh = new THREE.InstancedMesh(innerNodeGeo, techComponentMat, 6);
+      const outerNodesMesh = new THREE.InstancedMesh(outerNodeGeo, techComponentMat, 6);
+      const nodeMatrix = new THREE.Matrix4();
+      cornerPoints.forEach((p, i) => innerNodesMesh.setMatrixAt(i, nodeMatrix.setPosition(p)));
+      outerPoints.forEach((p, i) => outerNodesMesh.setMatrixAt(i, nodeMatrix.setPosition(p)));
+      mainGroup.add(innerNodesMesh, outerNodesMesh);
 
-        const perimeterRod = create3DRod(startPt, endPt, 0.03);
-        mainGroup.add(perimeterRod);
-      }
+      // Thick Volumetric 3D Rods: 6 radial stalks + 6 hexagonal perimeter links,
+      // collapsed into a single InstancedMesh. Each instance reuses unitRodGeo and
+      // is positioned/oriented/sized (via matrix compose) exactly as the original
+      // per-rod geometry + quaternion alignment did.
+      const rodPairs: [THREE.Vector3, THREE.Vector3][] = [];
+      for (let i = 0; i < 6; i++) rodPairs.push([cornerPoints[i], outerPoints[i]]);
+      for (let i = 0; i < 6; i++) rodPairs.push([cornerPoints[i], cornerPoints[(i + 1) % 6]]);
+
+      const rodRadius = 0.03;
+      const rodsMesh = new THREE.InstancedMesh(unitRodGeo, techComponentMat, rodPairs.length);
+      const rodMatrix = new THREE.Matrix4();
+      const rodPosition = new THREE.Vector3();
+      const rodQuaternion = new THREE.Quaternion();
+      const rodScale = new THREE.Vector3();
+      const rodUp = new THREE.Vector3(0, 1, 0);
+      const rodDirection = new THREE.Vector3();
+
+      rodPairs.forEach(([p1, p2], i) => {
+        const distance = p1.distanceTo(p2);
+        rodPosition.copy(p1).add(p2).multiplyScalar(0.5);
+        rodDirection.subVectors(p2, p1).normalize();
+        rodQuaternion.setFromUnitVectors(rodUp, rodDirection);
+        rodScale.set(rodRadius, distance, rodRadius);
+        rodMatrix.compose(rodPosition, rodQuaternion, rodScale);
+        rodsMesh.setMatrixAt(i, rodMatrix);
+      });
+      mainGroup.add(rodsMesh);
 
       // ================= D. HOLOGRAPHIC METALLIC BASE / PEDESTAL =================
       // A grounded platform beneath the floating emblem — stays static while the
@@ -563,6 +564,17 @@ export function QEmblem({ height = 500 }: { height?: number }) {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      if (scene) {
+        scene.traverse((obj: any) => {
+          obj.geometry?.dispose();
+          const materials = Array.isArray(obj.material) ? obj.material : obj.material ? [obj.material] : [];
+          materials.forEach((mat: any) => {
+            mat.map?.dispose();
+            mat.envMap?.dispose();
+            mat.dispose();
+          });
+        });
+      }
       if (renderer) renderer.dispose();
     };
   }, [isClient, width, height]);
