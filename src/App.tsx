@@ -191,7 +191,7 @@ md:-translate-y-10
               We a passionate developer and problem solver who turns ideas into powerful digital products. From concept to deployment, We deliver solutions that are fast, scalable, and built to make an impact.
             </p>
             <a
-  href="https://www.instagram.com/orqelix.tech/"
+  href="https://www.linkedin.com/company/orqelix"
   target="_blank"
   rel="noopener noreferrer"
   className="mt-6 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:bg-surface-alt hover:-translate-y-1"
