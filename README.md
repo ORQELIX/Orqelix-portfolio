@@ -178,8 +178,6 @@ Deploys to GitHub Pages.
 
 ## 👨‍💻 Developed By
 
-**Ritik Kashyap**
-
 Founder — **Orqelix**
 
 ---
