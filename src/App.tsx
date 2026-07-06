@@ -13,7 +13,7 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
-
+import Orqelixwhite from "./assets/orqelix-white.png";
 import OrqelixLogo from "./assets/orqelix.png";
 import RitikPhoto from "./assets/ritik.jpg";
 import SidhanshuPhoto from "./assets/sidhanshu.jpeg";
@@ -488,7 +488,7 @@ to-[#09112d]" />
            <div className="flex items-start justify-center mt-8 md:-mt-20">
   {isMobile ? (
     <img
-      src={OrqelixLogo}
+      src={Orqelixwhite}
       alt="Orqelix Logo"
       className="w-56 h-auto"
     />
