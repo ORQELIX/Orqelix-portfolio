@@ -447,10 +447,7 @@ md:-translate-y-10
     relative
     overflow-hidden
     rounded-3xl
-    bg-gradient-to-br
-    from-[#162A72]
-    via-[#1B3FA8]
-    to-[#081126]
+    bg-[radial-gradient(circle_at_35%_20%,#3B82F6_0%,#1D4ED8_28%,#0A1F66_60%,#050B1E_100%)]
     md:bg-[#09112d]
     p-10
     text-white
@@ -465,7 +462,7 @@ md:-translate-y-10
              -translate-y-1/2
              rounded-full
              bg-white
-             opacity-35 md:opacity-90
+             opacity-10 md:opacity-90
              "
 />
 {/* Blue transition */}
@@ -474,15 +471,21 @@ md:-translate-y-10
              h-[700px] w-[700px]
              -translate-y-1/2
              rounded-full
-             bg-blue-500/10 md:bg-blue-500/20
+             bg-cyan-400/30 md:bg-blue-500/20
              "
 />
 {/* Accent glow on top-right */}
 <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-indigo-500/30 blur-[140px]" />
-<div className="absolute inset-0 bg-gradient-to-r
-from-white/10
-via-blue-500/10
-to-[#09112d]" />
+<div
+  className="
+    absolute
+    inset-0
+    bg-gradient-to-br
+    from-blue-400/10
+    via-transparent
+    to-[#050B1E]/70
+  "
+/>
 
           <div className="relative grid items-start gap-8 md:grid-cols-[1fr_1.2fr]">
            <div className="flex items-start justify-center mt-8 md:-mt-20">
